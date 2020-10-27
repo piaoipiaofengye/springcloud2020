@@ -1,16 +1,14 @@
 package com.atguigu.springcloud.controller;
 
 
+import com.atguigu.springcloud.dao.PaymentDao;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
 import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 import com.sun.org.apache.bcel.internal.generic.RETURN;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PaymentController {
@@ -19,9 +17,8 @@ public class PaymentController {
     private PaymentService paymentService;
 
 
-
     @RequestMapping(method = RequestMethod.POST,value = "/payment/create")
-    public CommonResult creatPayment(Payment payment) {
+    public CommonResult creatPayment(@RequestBody Payment payment) {
 
         int result = paymentService.creat(payment);
 

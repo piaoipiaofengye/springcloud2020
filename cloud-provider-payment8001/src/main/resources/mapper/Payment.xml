@@ -6,12 +6,16 @@
     </resultMap>
 
     <insert id="creat" useGeneratedKeys="true" parameterType="com.atguigu.springcloud.entities.Payment">
-        insert into  payment(serial)  values(#{payment})
+
+      insert into payment(serial) values (#{serial})
+
     </insert>
 
     <select id="getPaymentById"  parameterType="long"   resultMap="baseResultMap">
             select  * from   payment where   id=#{id}
     </select>
+
+
 
 
 </mapper>
