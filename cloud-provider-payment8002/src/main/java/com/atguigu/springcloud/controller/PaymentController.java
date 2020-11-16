@@ -1,13 +1,9 @@
 package com.atguigu.springcloud.controller;
 
 
-import com.atguigu.springcloud.dao.PaymentDao;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +23,7 @@ public class PaymentController {
         int result = paymentService.creat(payment);
 
         if (result > 0) {
-            return new CommonResult(200, "插入数据成功,port:"+serverPort, result);
+            return new CommonResult(200, "插入数据成功,port"+serverPort, result);
         }
 
         return new CommonResult(404, "插入数据失败", null);
@@ -38,7 +34,7 @@ public class PaymentController {
 
         Payment payment = paymentService.getPaymentById(id);
         if (payment!=null){
-            return   new CommonResult(200,"数据查询成功+port:"+serverPort,payment);
+            return   new CommonResult(200,"数据查询成功,port"+serverPort,payment);
         }
         return new CommonResult(404,"数据查询失败",null);
 
